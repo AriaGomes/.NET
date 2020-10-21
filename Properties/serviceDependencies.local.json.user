@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "restored": true,
+      "restoreTime": "2020-10-21T17:31:59.3429246Z"
+    },
+    "mssql1": {
+      "restored": true,
+      "restoreTime": "2020-10-21T17:32:13.6184438Z"
+    }
+  },
+  "parameters": {
+    "secrets1.resourceGroupName": {
+      "Type": "resourceGroup",
+      "Value": "AriaLab2"
+    },
+    "mssql1.subscriptionId": {
+      "Type": "subscription",
+      "Value": "497e61a2-a742-451b-881e-7a709eae0908"
+    },
+    "mssql1.resourceGroupName": {
+      "Type": "resourceGroup",
+      "Value": "AriaLab4"
+    },
+    "secrets1.subscriptionId": {
+      "Type": "subscription",
+      "Value": "497e61a2-a742-451b-881e-7a709eae0908"
+    }
+  }
+}
