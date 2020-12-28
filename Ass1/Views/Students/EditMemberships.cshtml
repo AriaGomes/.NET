@@ -1,0 +1,70 @@
+﻿@model Assign1.Models.ViewModels.StudentViewModel
+@using System.Diagnostics
+<h1>Edit</h1>
+
+<div>
+    <h4>Student</h4>
+    <hr>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Full Name
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Student.FullName
+        </dd>
+    </dl>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-4">
+        <table>
+            <tbody>
+                @{ var memberships = Model.CommunityMemberships.ToList(); }
+                @{ var unregistered = true;}
+
+                @foreach (Assign1.Models.Community i in Model.Communities)
+                {
+                    foreach (Assign1.Models.CommunityMembership v in Model.CommunityMemberships)
+                    {
+                        if (i.ID == v.CommunityID)
+                        {
+                            unregistered = false;
+                            break;
+                        }
+                        else
+                        {
+                            unregistered = true;
+                        }
+
+                    }
+                <tr>
+                    <td>
+                        @i.Title
+                    </td>
+                    @if (unregistered == true)
+                    {
+
+                        <td>
+                            @{var paramets = new Dictionary<string, string> { { "studentId", Model.Student.ID.ToString() }, { "communityId", i.ID } };}
+                            <a asp-action="AddMembership" asp-all-route-data="paramets">Register</a>
+                        </td>
+
+                    }
+                    else
+                    {
+                        <td>
+                            @{var paramets = new Dictionary<string, string> { { "studentId", Model.Student.ID.ToString() }, { "communityId", i.ID } };}
+                            <a asp-action="RemoveMembership" asp-all-route-data="paramets">Unregister</a>
+                        </td>
+
+                    }
+                </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div>
+    <a href="/Students">Back to List</a>
+</div>

@@ -1,0 +1,52 @@
+﻿@model Assign1.Models.ViewModels.AdvertisementViewModel
+
+<div class="container">
+    <main role="main" class="pb-3">
+
+
+        <h1>Show ads for community @Model.Community.Title</h1>
+
+        <p>
+            <a asp-action="Upload" asp-route-id="@Model.Community.ID">Upload New</a>
+        </p>
+
+        <div>
+            <a asp-controller="Communities" asp-action="Index">Back to List</a>
+        </div>
+
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>
+                        File Name
+                    </th>
+                    <th>
+                        Image
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Advertisements != null) {
+                @foreach (Assign1.Models.Advertisement i in Model.Advertisements)
+                    {
+                <tr>
+                    <td>
+                        @i.FileName
+                    </td>
+                    <td>
+                        <img src="@i.Url" style="max-width: 400px;">
+                    </td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@i.AdvertisementId">Delete</a>
+                    </td>
+                </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </main>
+</div>
+
+
+

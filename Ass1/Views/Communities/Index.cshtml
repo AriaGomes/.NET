@@ -1,0 +1,79 @@
+﻿@model Assign1.Models.ViewModels.CommunityViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Budget
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Communities)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Budget)
+                </td>
+                <td>
+                    <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-controller="Advertisements" asp-action="Index" asp-route-id="@item.ID">Ads</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (Model.CommunityMemberships != null)
+{
+    <h1>Members of the community</h1>
+    <table class="table table-dark" >
+        <tbody>
+
+            @if (Model.CommunityMemberships.Count() != 0)
+            {
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                </tr>
+                @foreach (var item in Model.CommunityMemberships)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Student.FullName)
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <th>
+                        No membership record exist
+                    </th>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
