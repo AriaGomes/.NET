@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Lab6</name>
+    </assembly>
+    <members>
+        <member name="M:Lab6.Controllers.StudentsController.Get">
+            <summary>
+            Get collection of Students.
+            </summary>
+            <returns>A collection of Students</returns>
+            <response code="200">Returns a collection of Students</response>
+            <response code="500">Internal error</response>      
+        </member>
+        <member name="M:Lab6.Controllers.StudentsController.GetById(System.Guid)">
+            <summary>
+            Get a Student.
+            </summary>
+            <param ID="ID"></param>
+            <returns>A Student</returns>
+            <response code="201">Returns a collection of Students</response>
+            <response code="400">If the id is malformed</response>      
+            <response code="404">If the Student is null</response>      
+            <response code="500">Internal error</response>
+        </member>
+        <member name="M:Lab6.Controllers.StudentsController.CreateAsync(Lab6.Models.StudentBase)">
+             <summary>
+             Creates a Student.
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 POST /Students
+                 {
+                    "FirstName" = "FirstName",
+                    "LastName" = "LastName",
+                    "Program" = "Program"
+                 }
+            
+             </remarks>
+             <returns>A newly created Student</returns>
+             <response code="201">Returns the newly created Student</response>
+             <response code="400">If the Student is malformed</response>      
+             <response code="500">Internal error</response>
+        </member>
+        <member name="M:Lab6.Controllers.StudentsController.Update(System.Guid,Lab6.Models.StudentBase)">
+             <summary>
+             Updates a Student
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 PUT /Students
+                 {
+                    "FirstName" = "FirstName",
+                    "LastName" = "LastName",
+                    "Program" = "Program"
+                 }
+            
+             </remarks>
+             <param ID="ID"></param>
+             <returns>An upserted Car</returns>
+             <response code="200">Returns the updated Student</response>
+             <response code="400">If the Student or id is malformed</response> 
+             <response code="404">If the Student is not found</response>
+             <response code="500">Internal error</response>
+        </member>
+        <member name="M:Lab6.Controllers.StudentsController.DeleteConfirmed(System.Guid)">
+            <summary>
+            Deletes a Student.
+            </summary>
+            <param ID="ID"></param>
+            <response code="202">Student is deleted</response>
+            <response code="400">If the id is malformed</response>      
+            <response code="500">Internal error</response>
+        </member>
+    </members>
+</doc>
